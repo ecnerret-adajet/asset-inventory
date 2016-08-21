@@ -35,6 +35,17 @@ class CreateDisposalsTable extends Migration
                 ->onDelete('cascade');
             $table->timestamps();
         });
+
+            Schema::create('asset_disposal', function (Blueprint $table){
+            $table->integer('disposal_id')->unsigned()->index();
+            $table->foreign('disposal_id')->references('id')->on('disposals')->onDelete('cascade');
+            
+            $table->integer('asset_id')->unsigned()->index();
+            $table->foreign('asset_id')->references('id')->on('assets')->onDelete('cascade');
+            
+            $table->timestamps();
+        
+        });
     }
 
     /**
