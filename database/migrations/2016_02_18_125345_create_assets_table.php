@@ -22,6 +22,8 @@ class CreateAssetsTable extends Migration
             $table->integer('asset_year');
             $table->string('it_code');
             $table->string('finance_code');
+            $table->string('filePath');
+            $table->string('asset_map');
             
             /* components */
             
@@ -47,6 +49,17 @@ class CreateAssetsTable extends Migration
             $table->string('parallel_port');
             $table->string('ethernet_port');
             $table->string('wifi_port');
+            $table->string('local');
+            $table->string('firmware_version');
+                $table->string('hostname');
+            $table->string('ip_address');
+            $table->string('volume_capacity');
+            $table->string('storage_memory');
+            $table->string('storage_version');
+            $table->string('po_number');
+               $table->timestamp('transfer_date');
+                 $table->string('status_justify');
+            $table->timestamp('asset_status_date');
             
             /* purchases */
             

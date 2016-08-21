@@ -21,6 +21,7 @@ class CreateDisposalsTable extends Migration
             $table->string('disposal_method');
             $table->timestamp('disposal_date');
             $table->string('market_value');
+            $table->string('price');
             
               $table->foreign('user_id')
                 ->references('id')
