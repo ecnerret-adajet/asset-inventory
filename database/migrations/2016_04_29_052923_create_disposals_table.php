@@ -55,6 +55,7 @@ class CreateDisposalsTable extends Migration
      */
     public function down()
     {
+        Schema::drop('asset_disposal');
         Schema::drop('disposals');
     }
 }

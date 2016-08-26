@@ -15,194 +15,77 @@
           </ol>
         </section>
 
-   <!-- Main content -->
+ <!-- Main content -->
         <section class="content">
-            
-               <div class="row">
-            <div class="col-xs-12">
-              <div class="box">
-                <div class="box-header">
-                  <h2 class="box-title">
-                     All Asset List
-                    
-                    </h2>
-                </div><!-- /.box-header -->
-                  <div class="box-body">
-  
-                  @can('admin', $asset)
-  
-                    <!-- Large modal -->
-                    <a href="{{url('/assets/create')}}">
-<button type="button" class="btn btn-warning bootstrap-modal-form-open">Add Assets <i class="fa fa-plus-circle"></i></button></a>
-                    
-<button type="button" class="btn btn-danger bootstrap-modal-form-open" data-toggle="modal" data-target=".bs-example-modal-lg">Export Fields <i class="fa fa-plus-circle"></i></button> 
-     @endcan               
-                    
-                    
-                    
-                    <span class="pull-right">Total Number of Assignees: <strong>{{$assets->count()}}</strong> | Updated at: </span>
-                    
-                    <hr/>
-        
-                    
-    <div id="MainMenu">
-  <div class="list-group panel">
-    <a href="#demo1" class="list-group-item list-group-item-danger strong" data-toggle="collapse" data-parent="#MainMenu"><i class="fa fa-search"></i> Advance Search <i class="fa fa-caret-down"></i></a>
-    <div class="collapse list-group-submenu" id="demo1">
-        
-        <div class="row" style="margin-top: 20px">
-    <div class="col-md-2"><p id="asset_type"></p></div>
-    <div class="col-md-2"><p id="brand"></p></div>
-    <div class="col-md-2"><p id="model"></p></div>
-    <div class="col-md-2"><p id="serial"></p></div>
-    <div class="col-md-2"><p id="it_code"></p></div>
-    <div class="col-md-2"><p id="assignee_name"></p></div>
-        </div>
-        
-    
-    </div>
+          <div class="row">
+
+          <div class="col-md-12">
+                        <div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"> <i class="fa fa-database" aria-hidden="true"></i> Browse Assets <a href="{{url('users/create')}}" class="btn btn-info"><i class="fa fa-plus" aria-hidden="true"></i> Add Asset</a> </h3>
   </div>
-</div>
-                    
-<table id="asset" class="table display table-bordered table-hover table-striped dt-responsive nowrap" cellspacing="0" width="100%">                    
-    
-  <thead>
-  <tr>
-  <th>ASSET TYPE</th>
-  <th>BRAND NAME</th>
-  <th>ASSET MODEL</th>
-  <th>SERIAL</th>
-  <th>IT CODE</th>
-  <th>ASSIGNEE NAME</th>
-  <th>ACTIONS</th>
+  <div class="panel-body">
   
 
-    </tr>
-      
-      
-      
-	
-	
-  </thead>
-        
-    
-  <tfoot>
-  <tr>
-   <th>ASSET TYPE</th>
-  <th>BRAND NAME</th>
-  <th>ASSET MODEL</th>
-  <th>SERIAL</th>
-  <th>IT CODE</th>
-  <th>ASSIGNEE NAME</th>
-  <th>ACTIONS</th>
+<div class="row text-center " style="padding: 10px;  margin: 0 auto; ">
+
+<div class="col-md-2 col-sm-4 col-xs-3 box-asset">
+<a href="{{url('own/keyboard')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/keyboard.png')}}">
+  <p class="text-center">Keyboard</p>
+</a>
+</div>
+
+<div class="col-md-2 col-sm-4 col-xs-3 box-asset">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/keyboard.png')}}">
+  <p class="text-center">Keyboard</p>
+</div>
+
+<div class="col-md-2 col-sm-4 col-xs-3 box-asset">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/keyboard.png')}}">
+  <p class="text-center">Keyboard</p>
+</div>
+
+<div class="col-md-2 col-sm-4 col-xs-3 box-asset">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/keyboard.png')}}">
+  <p class="text-center">Keyboard</p>
+</div>
+
+<div class="col-md-2 col-sm-4 col-xs-3 box-asset">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/keyboard.png')}}">
+  <p class="text-center">Keyboard</p>
+</div>
+
+<div class="col-md-2 col-sm-4 col-xs-3 box-asset">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/keyboard.png')}}">
+  <p class="text-center">Keyboard</p>
+</div>
 
 
-    </tr>
-	
-  </tfoot>
-        
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
 
  
-  <tbody>
-      @foreach ($assets as $asset)
-
-   
-      <tr>
-          
-          
-          
-      <td>
-          @foreach($asset->owns as $own)
-          {{$own->name }}
-          @endforeach
-      </td>
-          
-          
-      <td>{{$asset->brand}}</td>
-      <td>{{$asset->model}}</td>
-          
-      <td>{{$asset->serial_number}}</td>
-      <td>{{$asset->it_code}}</td>
-          
-          
-          
-      <td>
-         {{$asset->trasfer_name}}   
-      </td>
-          
-          
-          
-          <td> 
-              
-           <div class="btn-group">
-      <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-        Action
-        <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu">
-        <li>
-            <!-- temporary
-        <a href="#" class="bootstrap-modal-form-open" data-toggle="modal" data-target=".bs-edit{{$asset->id}}-modal-lg">Edit Asset</a>
-            -->
-            
-        <a href="{{url ('assets/' .$asset->id. '/transfer') }}">Transfer Asset</a>
-        </li>
-          
-          <li>
-          <a href="{{url('/assets', $asset->id)}}">View Details</a>
-          </li>
-          
-     
-          
-       <li data-form="#frmDelete-{{$asset->id}}" data-title="Delete Assignee" data-message="Are you sure you want to delete ?" >
-              <a class = "formConfirm" href="">Delete Asset</a>
-        </li>
-          
-          <li>
-            <a href="#" data-toggle="modal" data-target=".bs-history{{$asset->id}}-modal-lg">History</a>
-          </li>
-          
-          
-          {!! Form::open(['id' => 'frmDelete-' . $asset->id, 'style' => 'display:none', 'method' => 'DELETE', 'action' =>                                    ['AssetsController@destroy', $asset->id]  ]) !!}
-          {{ Form::submit('Submit') }}
-          {!! Form::close() !!}
-          
-          
-                              
-
-    
-
-       </ul>
-    </div>
-          
-          </td>
-          
-       
-          
-        
-          
-          
-          
-
-      </tr>   
-      
-      
-      
-      
-     @endforeach
-        </tbody>
-    </table>
-                    
-                    
-                    
-                
-                    
-                    
-                    </div>
-                   </div>
-                </div>
+  </div>
             </div>
+            </div><!-- end col -->
+
+            
+          </div><!-- /.row -->
         </section><!-- /.content -->
+
 
 
 @foreach($assets as $asset)

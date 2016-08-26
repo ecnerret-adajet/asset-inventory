@@ -153,6 +153,7 @@ return [
         Sofa\Revisionable\Laravel\ServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
+        Zizaco\Entrust\EntrustServiceProvider::class,
 
 
         /*
@@ -213,6 +214,7 @@ return [
         'Image'     => Intervention\Image\Facades\Image::class,
         'Flashy'    => MercurySeries\Flashy\Flashy::class,
         'QrCode'    => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
     
 
     ],

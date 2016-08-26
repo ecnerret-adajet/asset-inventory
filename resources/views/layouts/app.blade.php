@@ -22,7 +22,7 @@
     <!-- jvectormap -->
     <link rel="stylesheet" href="{{asset('/plugins/jvectormap/jquery-jvectormap-1.2.2.css')}}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset('/css/AdminLTE.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/AdminLTE.css')}}">
     <link rel="stylesheet" href="{{asset('/css/custom.css')}}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
@@ -152,25 +152,74 @@
               </a>
            
             </li>
-              
-              
-                 
+
+             <li>
+              <a href="#">
+                <i class="fa fa-file-text-o" aria-hidden="true"></i> <span>Policy</span> </i>
+              </a>
+           
+            </li>
+                            
             <li>
               <a href="{{url('/assignees')}}">
-                <i class="fa fa-user"></i>
+               <i class="fa fa-database" aria-hidden="true"></i>
                 <span>Assignee</span>
               </a>
              
             </li>
               
                     
-                <li>
-              <a href="{{url('assets/create')}}">
-                <i class="fa fa-bolt" style="color:#f1c40f;"></i>
-                <span>Add Asset</span>
+            <li>
+              <a href="{{url('assets')}}">
+               <i class="fa fa-database" aria-hidden="true"></i>
+                <span>Assets</span>
               </a>
             </li>
 
+            <li>
+              <a href="{{url('assets/create')}}">
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <span>Laptop</span>
+              </a>
+            </li>
+
+              <li>
+              <a href="{{url('assets/create')}}">
+               <i class="fa fa-database" aria-hidden="true"></i>
+                <span>Stocks</span>
+              </a>
+            </li>
+
+               <li>
+              <a href="{{url('assets/create')}}">
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <span>Leased assets</span>
+              </a>
+            </li>
+
+               <li>
+              <a href="{{url('assets/create')}}">
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <span>Demo assets</span>
+              </a>
+            </li>
+
+               <li>
+              <a href="{{url('assets/create')}}">
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <span>PLC</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="{{url('assets/create')}}">
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <span>Disposed</span>
+              </a>
+            </li>
+
+
+<!-- temporary
            <li class="treeview">
               <a href="#">
                 <i class="fa fa-suitcase"></i>
@@ -178,132 +227,55 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{url('own/keyboard')}}"><i class="fa fa-circle-o"></i> Keyboard</a></li>
-                <li><a href="{{url('own/mouse')}}"><i class="fa fa-circle-o"></i> Mouse</a></li>
-                <li><a href="{{url('own/microphones')}}"><i class="fa fa-circle-o"></i> Microphones</a></li>
-                <li><a href="{{url('own/biometrics')}}"><i class="fa fa-circle-o"></i> Biometrics</a></li>
-                <li><a href="{{url('own/monitor')}}"><i class="fa fa-circle-o"></i> Monitor</a></li>
-                <li><a href="{{url('own/tv-monitor')}}"><i class="fa fa-circle-o"></i> TV Monitor</a></li>
-                <li><a href="{{url('own/printer')}}"><i class="fa fa-circle-o"></i> Printer</a></li>
-                <li><a href="{{url('own/scanner')}}"><i class="fa fa-circle-o"></i> Scanner</a></li>
-                <li><a href="{{url('own/printer-scanner')}}"><i class="fa fa-circle-o"></i> Printer-scanner</a></li>
-                <li><a href="{{url('own/cctv')}}"><i class="fa fa-circle-o"></i> Cctv</a></li>
-                <li><a href="{{url('own/camera')}}"><i class="fa fa-circle-o"></i> Camera</a></li>
-                <li><a href="{{url('own/projector')}}"><i class="fa fa-circle-o"></i> Projector</a></li>
-                <li><a href="{{url('own/switches')}}"><i class="fa fa-circle-o"></i> Switches</a></li>
-                <li><a href="{{url('own/firewalls')}}"><i class="fa fa-circle-o"></i> Firewalls</a></li>
-                <li><a href="{{url('own/synology')}}"><i class="fa fa-circle-o"></i> Synology</a></li>
-                <li><a href="{{url('own/server')}}"><i class="fa fa-circle-o"></i> Server</a></li>
-                <li><a href="{{url('own/fortigate')}}"><i class="fa fa-circle-o"></i> Fortigate</a></li>
-                <li><a href="{{url('own/hard-disk')}}"><i class="fa fa-circle-o"></i> Hard Disks</a></li>
-                <li><a href="{{url('/own/cpu')}}"><i class="fa fa-circle-o"></i> CPU</a></li>
-                <li><a href="{{url('own/laptop')}}"><i class="fa fa-circle-o"></i> Laptop</a></li>
-                <li><a href="{{url('own/phones')}}"><i class="fa fa-circle-o"></i> Phones</a></li>
-                <li><a href="{{url('own/fax')}}"><i class="fa fa-circle-o"></i> Fax</a></li>
-                <li><a href="{{url('own/video-card')}}"><i class="fa fa-circle-o"></i> Video Card</a></li> 
-                <li><a href="{{url('own/sound-card')}}"><i class="fa fa-circle-o"></i> Sound Card</a></li> 
-                <li><a href="{{url('own/Motherboard')}}"><i class="fa fa-circle-o"></i> Motherboard</a></li> 
-                <li><a href="{{url('own/ups')}}"><i class="fa fa-circle-o"></i> UPS</a></li>
+  <li><a href="{{url('own/keyboard')}}"><i class="fa fa-circle-o"></i> Keyboard</a></li>
+  <li><a href="{{url('own/mouse')}}"><i class="fa fa-circle-o"></i> Mouse</a></li>
+  <li><a href="{{url('own/microphones')}}"><i class="fa fa-circle-o"></i> Microphones</a></li>
+  <li><a href="{{url('own/biometrics')}}"><i class="fa fa-circle-o"></i> Biometrics</a></li>
+  <li><a href="{{url('own/monitor')}}"><i class="fa fa-circle-o"></i> Monitor</a></li>
+  <li><a href="{{url('own/tv-monitor')}}"><i class="fa fa-circle-o"></i> TV Monitor</a></li>
+  <li><a href="{{url('own/printer')}}"><i class="fa fa-circle-o"></i> Printer</a></li>
+  <li><a href="{{url('own/scanner')}}"><i class="fa fa-circle-o"></i> Scanner</a></li>
+  <li><a href="{{url('own/printer-scanner')}}"><i class="fa fa-circle-o"></i> Printer-scanner</a></li>
+  <li><a href="{{url('own/cctv')}}"><i class="fa fa-circle-o"></i> Cctv</a></li>
+  <li><a href="{{url('own/camera')}}"><i class="fa fa-circle-o"></i> Camera</a></li>
+  <li><a href="{{url('own/projector')}}"><i class="fa fa-circle-o"></i> Projector</a></li>
+  <li><a href="{{url('own/switches')}}"><i class="fa fa-circle-o"></i> Switches</a></li>
+  <li><a href="{{url('own/firewalls')}}"><i class="fa fa-circle-o"></i> Firewalls</a></li>
+  <li><a href="{{url('own/synology')}}"><i class="fa fa-circle-o"></i> Synology</a></li>
+  <li><a href="{{url('own/server')}}"><i class="fa fa-circle-o"></i> Server</a></li>
+  <li><a href="{{url('own/fortigate')}}"><i class="fa fa-circle-o"></i> Fortigate</a></li>
+  <li><a href="{{url('own/hard-disk')}}"><i class="fa fa-circle-o"></i> Hard Disks</a></li>
+  <li><a href="{{url('/own/cpu')}}"><i class="fa fa-circle-o"></i> CPU</a></li>
+  <li><a href="{{url('own/laptop')}}"><i class="fa fa-circle-o"></i> Laptop</a></li>
+  <li><a href="{{url('own/phones')}}"><i class="fa fa-circle-o"></i> Phones</a></li>
+  <li><a href="{{url('own/fax')}}"><i class="fa fa-circle-o"></i> Fax</a></li>
+  <li><a href="{{url('own/video-card')}}"><i class="fa fa-circle-o"></i> Video Card</a></li> 
+  <li><a href="{{url('own/sound-card')}}"><i class="fa fa-circle-o"></i> Sound Card</a></li> 
+  <li><a href="{{url('own/Motherboard')}}"><i class="fa fa-circle-o"></i> Motherboard</a></li> 
+  <li><a href="{{url('own/ups')}}"><i class="fa fa-circle-o"></i> UPS</a></li>
                   
                   
               </ul>
             </li>
+    -->    
           
           
-          
-          
-          
-          
-          <!-- temporary quick add tree
-            <li class="treeview">
+        
+              
+    
+              <li class="treeview">
               <a href="#">
-                <i class="fa fa-bolt" style="color:#f1c40f;"></i>
-                <span>Quick Add</span>
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <span>Users</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Keyboard</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Mouse</a></li>
-                <li><a href="{{url('assets/create')}}" ><i class="fa fa-circle-o text-yellow"></i> Microphones</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Biometrics</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Monitor</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> TV Monitor</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Printer</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Scanner</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Printer-scanner</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Cctv</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Camera</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Projector</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> CPU</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Laptop</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Phones</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Fax</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Video Card</a></li> 
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Sound Card</a></li> 
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Motherboard</a></li> 
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> UPS</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Switches</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Firewalls</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Synology</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Server</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Fortigate</a></li>
-                <li><a href="{{url('assets/create')}}"><i class="fa fa-circle-o text-yellow"></i> Hard Disks</a></li>
-                  
+                <li><a href="{{url('/users')}}"><i class="fa fa-tag" aria-hidden="true"></i> Manage Users</a></li>
+                <li><a href="{{url('/roles')}}"><i class="fa fa-tag" aria-hidden="true"></i> Manage Roles</a></li>
               </ul>
             </li>
-        -->
-              
-         
-  
-              
-    
-              
 
-              
-              
-              
-                      
-            <li>
-              <a href="#">
-                <i class="fa fa-cog" aria-hidden="true"></i> <span>PLC Assets</span> 
-              </a>
-            </li>
 
-               <li>
-              <a href="#">
-                <i class="fa fa-cog" aria-hidden="true"></i> <span>Demo</span> 
-              </a>
-            </li>
-
-             <li>
-              <a href="#">
-                <i class="fa fa-cog" aria-hidden="true"></i> <span>Personal Laptop</span> 
-              </a>
-            </li>
-              
-              
-      
-            <li>
-              <a href="{{url('/summary')}}">
-                <i class="fa fa-calendar"></i> <span>Reporting</span>
-                
-              </a>
-            </li>
-          
-               <li>
-              <a href="{{url('/disposals')}}">
-               <i class="fa fa-trash-o" aria-hidden="true"></i> <span>Disposal Assets</span>
-                
-              </a>
-            </li>
-              
-              
-                  <li>
-              <a href="{{url('/users')}}">
-                <i class="fa fa-users"></i> <span>User Management</span>
-            
-              </a>
-            </li>
               
      
           
@@ -593,6 +565,10 @@
           /* assginees table */
           
         $('#assignee').DataTable({
+    
+        });
+
+         $('#dafault-table').DataTable({
     
         });
           

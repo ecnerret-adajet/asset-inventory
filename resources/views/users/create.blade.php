@@ -5,167 +5,64 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">Add User</div>
                 <div class="panel-body">
-                   
-{!! Form::model($user = new \App\User,  ['class' => 'form-horizontal', 'role' => 'form',  'url' => 'users',  'files' => 'true', 'enctype'=>'multipart/form-data', 'novalidate' => 'novalidate', 'id' => 'assetinventoryForm'])!!}                        
-                        
-                        {!! csrf_field() !!}
-                        
-                                <div class="form-group">
-                    <label class="col-md-4 control-label"> 
-            {!! Form::label('image', 'Choose an image') !!}
-                    </label>
-                     <div class="col-md-6">
-           <input name="image" type="file" class="filestyle" data-iconName="glyphicon glyphicon-inbox" data-buttonName="btn-primary">
-                    </div>
+                    
+                    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
+    @endif
+    {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Name:</strong>
+                {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Email:</strong>
+                {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Password:</strong>
+                {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Confirm Password:</strong>
+                {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Role:</strong>
+                {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}
+            </div>
+        </div>
+       
+    </div>
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Name</label>
+          <div class="row">
+                    <div class="col-md-6">
+<a href="{{ route('users.index') }}" class="btn btn-default btn-sm"> Cancel</a>                    </div>
 
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        
-                        
-                        <div class="form-group{{ $errors->has('company') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Company</label>
-                            <div class="col-md-6">
-                             {{ Form::select('company', array(
-                                'LFUG' => 'LFUG', 
-                                'PFMC' => 'PFMC', 
-                                'ATH' => 'ATH', 
-                                'MTPCI' => 'MTPCI', 
-                                'PLILI' => 'PLILI', 
-                                'AGRISOL' => 'AGRISOL', 
-                                'LFMI' => 'LFMI', 
-                                'CSC' => 'CSC', 
-                                'MGC' => 'MGC', 
-                                'MGPCI' => 'MGPCI'), 
-                                null, array('placeholder' => ' -- Select Company --', 'class'=>'form-control' )) }}
-                                
-                                
-                                 @if ($errors->has('company'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('company') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                    <div class="col-md-6">
+                   {!! Form::submit('Submit', ['class' => 'btn btn-primary pull-right'])  !!}
                     </div>
-                        
-                        
-                        
-                              <div class="form-group{{ $errors->has('department') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Department</label>
-                            <div class="col-md-6">
-                             {{ Form::select('department', array(
-                                'Audit' => 'Audit', 
-                                'Admin' => 'Admin', 
-                                'Purchasing' => 'Purchasing', 
-                                'Finance' => 'Finance', 
-                                'Accounting' => 'Accounting', 
-                                'Sales' => 'Sales', 
-                                'ITD' => 'ITD', 
-                                'Legal' => 'Legal', 
-                                'Marketing' => 'Marketing'), 
-                                null, array('placeholder' => ' -- Select Department --', 'class'=>'form-control' )) }}
-                                
-                                
-                                 @if ($errors->has('department'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('department') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            </div>
+                   </div> 
+    {!! Form::close() !!}
 
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        
-                        
-                  
-                        
-                        
-
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password_confirmation">
-
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        
-                        
-                        
-                         <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Role</label>
-                            <div class="col-md-6">
-                             {{ Form::select('role', array(
-                                'Read' => 'Read', 
-                                'Encoder' => 'Encoder', 
-                                'Administrator' => 'Administrator'), 
-                                null, array('placeholder' => ' -- Select Role --', 'class'=>'form-control' )) }}
-                                
-                               @if ($errors->has('role'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('role') }}</strong>
-                                    </span>
-                                @endif 
-                                
-                            </div>
-                        </div>
-                        
-                        
-                        
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i>Register
-                                </button>
-                            </div>
-                        </div>
-                        
-                        {!! Form::close() !!}
                 </div>
             </div>
         </div>

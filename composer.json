@@ -12,7 +12,8 @@
         "mercuryseries/flashy": "^1.0",
         "simplesoftwareio/simple-qrcode": "~1",
         "sofa/revisionable": "^1.0",
-        "laracasts/utilities": "^2.1"
+        "laracasts/utilities": "^2.1",
+        "zizaco/entrust": "5.2.x-dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
