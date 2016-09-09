@@ -69,262 +69,218 @@
                    <!-- TABLE: LATEST ORDERS -->
               <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title text-uppercase">Asset per location</h3>
+                  <h3 class="box-title text-uppercase">Browse Assets</h3>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                   </div>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <div class="table-responsive">
-                    <table class="table no-margin table-bordered">
-                      <thead>
-                        <tr>
-                          <th class="danger">Location</th>
-                          <th class="danger">Total Asset</th>
-                          <th class="success">Status</th>
-                          <th class="success">Total</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>MANILA</td>
-                          <td>
-                           @foreach($places->slice(0,1) as $place)
-                              <strong>  {{ $place->assets->count() }} </strong>
-                           @endforeach
-                          </td>
-                          <td><span class="label label-success">Active</span></td>
-                          <td>
-                           @foreach($status->slice(0,1) as $statu)
-                              <strong>  {{ $statu->assets->count() }} </strong>
-                           @endforeach   
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>ILOILO</td>
-                          <td>
-                            @foreach($places->slice(1,1) as $place)
-                              <strong>  {{ $place->assets->count() }} </strong>
-                           @endforeach  
-                          </td>
-                          <td><span class="label label-warning">Obsolete</span></td>
-                          <td>
-                           @foreach($status->slice(1,1) as $statu)
-                              <strong>  {{ $statu->assets->count() }} </strong>
-                           @endforeach    
-                         </td>
-                        </tr>
-                        <tr>
-                          <td>BATAAN</td>
-                          <td>
-                           @foreach($places->slice(2,1) as $place)
-                              <strong> {{ $place->assets->count() }} </strong>
-                           @endforeach   
-                          </td>
-                          <td><span class="label label-danger">Replacement</span></td>
-                          <td>
-                          @foreach($status->slice(2,1) as $statu)
-                              <strong>  {{ $statu->assets->count() }} </strong>
-                           @endforeach  
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>ISABELA</td>
-                          <td>
-                             @foreach($places->slice(3,1) as $place)
-                              <strong>  {{ $place->assets->count() }} </strong>
-                           @endforeach 
-                          </td>
-                          <td><span class="label label-info">Supplemental</span></td>
-                          <td>
-                        @foreach($status->slice(3,1) as $statu)
-                              <strong>  {{ $statu->assets->count() }} </strong>
-                           @endforeach    
-                        </td>
-                        </tr>
-                        <tr>
-                          <td>CAPIZ</td>
-                          <td>
-                           @foreach($places->slice(4,1) as $place)
-                              <strong> {{ $place->assets->count() }} </strong>
-                           @endforeach 
-                          </td>
-                          <td><span class="label label-warning">Warranty</span></td>
-                          <td>
-                            @foreach($status->slice(4,1) as $statu)
-                              <strong>  {{ $statu->assets->count() }} </strong>
-                           @endforeach     
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>DAVAO</td>
-                          <td>
-                          @foreach($places->slice(5,1) as $place)
-                             <strong>{{ $place->assets->count() }}</strong> 
-                           @endforeach 
-                          </td>
-                          <td>  
-                            <span class="label label-danger">Repair</span>
-                            
-                        </td>
-                            
-                          <td>
-                              @foreach($status->slice(5,1) as $statu)
-                              <strong>  {{ $statu->assets->count() }} </strong>
-                           @endforeach   
-                        </td>
-                        </tr>
-                        <tr>
-                          <td>BACOLOD</td>
-                          <td>
-                              @foreach($places->slice(6,1) as $place)
-                              <strong>  {{ $place->assets->count() }} </strong>
-                           @endforeach 
-                          </td>
-                          <td><span class="label label-primary">Defective</span></td>
-                          <td>
-                             @foreach($status->slice(6,1) as $statu)
-                              <strong>  {{ $statu->assets->count() }}  </strong>
-                           @endforeach  
-                          </td>
-                        </tr>
-                             <tr>
-                          <td>ROXAS</td>
-                          <td>
-                            @foreach($places->slice(7,1) as $place)
-                              <strong>  {{ $place->assets->count() }} </strong>
-                           @endforeach        
-                          </td>
-                          <td><span class="label label-default">Disposed</span></td>
-                          <td>
-                            @foreach($status->slice(7,1) as $statu)
-                              <strong>  {{ $statu->assets->count() }} </strong>
-                           @endforeach        
-                          </td>
-                        </tr>
-                             <tr>
-                          <td>DUMAGUETE</td>
-                          <td>
-                         @foreach($places->slice(8,1) as $place)
-                              <strong>   {{ $place->assets->count() }} </strong>
-                           @endforeach 
-                          </td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                             <tr>
-                          <td>KALIBO</td>
-                          <td>
-                         @foreach($places->slice(9,1) as $place)
-                              <strong>     {{ $place->assets->count() }} </strong>
-                           @endforeach 
-                         </td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div><!-- /.table-responsive -->
+
+<div class="row box-body" style="margin-bottom: 0 ! important; padding-bottom: 0 ! important;">
+<div class="col-md-3 col-sm-6 box-asset">
+<a href="{{url('own/keyboard')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/keyboard.png')}}">
+  <p class="text-center">Keyboard</p>
+</a>
+</div>
+
+<div class="col-md-3 col-sm-6 box-asset">
+<a href="{{url('own/mouse')}}">
+  <img class="img-responsive img-asset"  src="{{asset('img/assets-sub/mouse.png')}}">
+  <p class="text-center">Mouse</p>
+  </a>
+</div>
+
+<div class="col-md-3 col-sm-6 box-asset">
+<a href="{{url('own/microphones')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/basic-microphone.png')}}">
+  <p class="text-center">Microphone</p>
+  </a>
+</div>
+
+<div class="col-md-3 col-sm-6 box-asset">
+<a href="{{url('own/biometrics')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/fingerprint-scanning.png')}}">
+  <p class="text-center">biometrics</p>
+  </a>
+</div>
+
+</div><!-- end row -->
+
+<div class="row box-body" style="margin-bottom: 0 ! important; padding-bottom: 0 ! important; padding-top: 0 ! important;">
+
+<div class="col-md-3  col-sm-6 box-asset">
+<a href="{{url('own/monitor')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/monitor.png')}}">
+  <p class="text-center">Monitor</p>
+  </a>
+</div>
+
+<div class="col-md-3  col-sm-6 box-asset">
+<a href="{{url('own/tv-monitor')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/monitor.png')}}">
+  <p class="text-center">TV Monitor</p>
+  </a>
+</div>
+
+<div class="col-md-3  col-sm-6 box-asset">
+<a href="{{url('own/printer')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/printer.png')}}">
+  <p class="text-center">Printer</p>
+</a>
+</div>
+
+<div class="col-md-3  col-sm-6 box-asset">
+<a href="{{url('own/printer-scanner')}}">
+  <img class="img-responsive img-asset"  src="{{asset('img/assets-sub/print.png')}}">
+  <p class="text-center">Printer Scanner</p>
+  </a>
+</div>
+
+</div>
+
+
+<div class="row box-body" style="margin-bottom: 0 ! important; padding-bottom: 0 ! important; padding-top: 0 ! important;">
+
+<div class="col-md-3  col-sm-6 box-asset">
+<a href="{{url('own/cctv')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/security-camera.png')}}">
+  <p class="text-center">Cctv</p>
+  </a>
+</div>
+
+<div class="col-md-3  col-sm-6 box-asset">
+<a href="{{url('own/camera')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/photo-camera.png')}}">
+  <p class="text-center">Camera</p>
+  </a>
+</div>
+
+<div class="col-md-3  col-sm-6 box-asset">
+<a href="{{url('own/projector')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/projector.png')}}">
+  <p class="text-center">Projector</p>
+  </a>
+</div>
+
+<div class="col-md-3  col-sm-6 box-asset">
+<a href="{{url('own/switches')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/server.png')}}">
+  <p class="text-center">Switches</p>
+  </a>
+</div>
+
+</div>
+
+
+
+<div class="row box-body" style="margin-bottom: 0 ! important; padding-bottom: 0 ! important; padding-top: 0 ! important;">
+
+<div class="col-md-3  col-sm-6 box-asset">
+<a href="{{url('own/ups')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/battery.png')}}">
+  <p class="text-center">UPS</p>
+</a>
+</div>
+
+<div class="col-md-3  col-sm-6 box-asset">
+<a href="{{url('own/firewalls')}}">
+  <img class="img-responsive img-asset"  src="{{asset('img/assets-sub/firewall.png')}}">
+  <p class="text-center">Firewalls</p>
+  </a>
+</div>
+
+<div class="col-md-3  col-sm-6 box-asset">
+<a href="{{url('own/synology')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/server.png')}}">
+  <p class="text-center">Synology</p>
+  </a>
+</div>
+
+<div class="col-md-3  col-sm-6 box-asset">
+<a href="{{url('own/server')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/server-1.png')}}">
+  <p class="text-center">Server</p>
+  </a>
+</div>
+
+</div>
+
+<div class="row box-body" style="margin-bottom: 0 ! important; padding-bottom: 0 ! important; padding-top: 0 ! important;">
+
+<div class="col-md-3  col-sm-6 box-asset">
+<a href="{{url('own/fortigate')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/router.png')}}">
+  <p class="text-center">Fortigate</p>
+  </a>
+</div>
+
+<div class="col-md-3  col-sm-6 box-asset">
+<a href="{{url('own/hard-disk')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/hard-drive.png')}}">
+  <p class="text-center">Hard Disk</p>
+  </a>
+</div>
+
+<div class="col-md-3  col-sm-6 box-asset">
+<a href="{{url('own/cpu')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/microchip.png')}}">
+  <p class="text-center">CPU</p>
+</a>
+</div>
+
+<div class="col-md-3  col-sm-6 box-asset">
+<a href="{{url('own/phones')}}">
+  <img class="img-responsive img-asset"  src="{{asset('img/assets-sub/phone.png')}}">
+  <p class="text-center">Phones</p>
+  </a>
+</div>
+
+</div>
+
+
+<div class="row box-body" style="margin-bottom: 0 ! important; padding-bottom: 0 ! important; padding-top: 0 ! important;">
+
+<div class="col-md-3 col-sm-6 box-asset">
+<a href="{{url('own/fax')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/portable-scanner.png')}}">
+  <p class="text-center">Fax</p>
+  </a>
+</div>
+
+<div class="col-md-3 col-sm-6 box-asset">
+<a href="{{url('own/video-card')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/video-card-1.png')}}">
+  <p class="text-center">Video Card</p>
+  </a>
+</div>
+
+<div class="col-md-3 col-sm-6 box-asset">
+<a href="{{url('own/sound-card')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/video-card.png')}}">
+  <p class="text-center">Sound Card</p>
+  </a>
+</div>
+
+<div class="col-md-3 col-sm-6 box-asset">
+<a href="{{url('own/motherboard')}}">
+  <img class="img-responsive img-asset" src="{{asset('img/assets-sub/motherboard.png')}}">
+  <p class="text-center">MotherBoard</p>
+  </a>
+</div>
+
+</div>
+
+
+
                 </div><!-- /.box-body -->
               
               </div><!-- /.box -->
                 
                 
                 
-           <!-- BAR CHART -->
-              <div class="box box-success">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Bar Chart</h3>
-                  <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                  </div>
-                </div>
-                <div class="box-body">
-                    
-                    
-<div id="test" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-
-<table id="datatable" class="hide">
-   <thead>
-        <tr>
-            <th></th>
-            <th>Total</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <tr>
-            <th>Active</th>
-            <td>
-            @foreach($status->slice(0,1) as $statu)
-                 {{ $statu->assets->count() }}
-            @endforeach 
-            </td>
-        </tr>
-        <tr>
-            <th>Obsolete</th>
-            <td>
-              @foreach($status->slice(1,1) as $statu)
-              {{ $statu->assets->count() }}
-            @endforeach   
-            </td>
-        </tr>
-        <tr>
-            <th>Replacement</th>
-            <td>
-             @foreach($status->slice(2,1) as $statu)
-                 {{ $statu->assets->count() }} 
-            @endforeach  
-            </td>
-        </tr>
-        <tr>
-            <th>Supplemental</th>
-            <td>
-               @foreach($status->slice(3,1) as $statu)
-                {{ $statu->assets->count() }}
-                @endforeach  
-            </td>
-        </tr>
-        <tr>
-            <th>Warranty</th>
-            <td>
-             @foreach($status->slice(4,1) as $statu)
-                {{ $statu->assets->count() }}
-                @endforeach 
-            </td>
-        </tr>
-         <tr>
-            <th>Repair</th>
-            <td>
-              @foreach($status->slice(5,1) as $statu)
-                {{ $statu->assets->count() }}
-                @endforeach  
-            </td>
-        </tr>
-         <tr>
-            <th>Defective</th>
-            <td>
-              @foreach($status->slice(6,1) as $statu)
-                {{ $statu->assets->count() }}
-                @endforeach  
-            </td>
-        </tr>
-         <tr>
-            <th>Disposed</th>
-            <td>
-              @foreach($status->slice(7,1) as $statu)
-                {{ $statu->assets->count() }}
-                @endforeach  
-            </td>
-        </tr>
-    </tbody>
-</table>
-                    
-                    
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
+          
             
                 
                 
@@ -347,7 +303,7 @@
                     <div class="progress-bar" style="width: 50%"></div>
                   </div>
                   <span class="progress-description">
-                    50% Increase in 30 Days
+            
                   </span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
@@ -364,42 +320,76 @@
                     <div class="progress-bar" style="width: 20%"></div>
                   </div>
                   <span class="progress-description">
-                    20% Increase in 30 Days
+                   
                   </span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
-              <div class="info-box bg-red">
-                <span class="info-box-icon"><i class="ion-android-call"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Phones</span>
-                  <span class="info-box-number">
-                       @foreach($owns->slice(8,1) as $own)
-                  {{ $own->assets->count() }}  
-                           @endforeach  
-                </span>
-                  <div class="progress">
-                    <div class="progress-bar" style="width: 70%"></div>
-                  </div>
-                  <span class="progress-description">
-                    70% Increase in 30 Days
-                  </span>
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
-              <div class="info-box bg-aqua">
-                <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Direct Messages</span>
-                  <span class="info-box-number">163,921</span>
-                  <div class="progress">
-                    <div class="progress-bar" style="width: 40%"></div>
-                  </div>
-                  <span class="progress-description">
-                    40% Increase in 30 Days
-                  </span>
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
+           
+           
 
              
+              <!-- PRODUCT LIST -->
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Asset History</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <ul class="products-list product-list-in-box">
+                      
+                      
+                        @foreach($assets->slice(0,5) as $asset)
+                     
+                            
+                    <li class="item">
+                      <div class="product-img">
+                          
+                              @if (file_exists(public_path('images/'.$asset->id.'.jpg')))
+                             <img class="img-responsive img-rounded" style="width: 50px; height: 50px;" src="{{asset('/images/'.$asset->id.'.jpg') }}" /> 
+                            @else
+                            <img class="img-responsive img-rounded" style="width: 50px; height: 50px;" src="{{asset('/images/placeholder.jpg') }}" /> 
+                            @endif
+                          
+                      </div>
+
+
+                      <div class="product-info">
+                        <a href="{{url ('/assets', $asset->id) }}" class="product-title">{{$asset->model}}<span class="label label-danger pull-right">
+                          Assigned to: {{$asset->trasfer_name}}   
+                            </span></a>
+                        <span class="product-description">
+                          {{$asset->serial_number }}
+                        </span>
+                          <span>
+                              
+                            @foreach($asset->revisions as $revision)
+                             @foreach ($revision->old as $key => $v)
+
+
+                    {{ $revision->old($key) }} Transferred to {{ $revision->new($key) }}
+
+
+                              @endforeach
+                            @endforeach
+
+                          </span>
+                      </div>
+                    </li><!-- /.item -->
+                      
+                      
+                          @endforeach
+                   
+                  </ul>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="javascript::;" class="uppercase">View all transaction</a>
+                </div><!-- /.box-footer -->
+              </div><!-- /.box -->
+
+
               <!-- PRODUCT LIST -->
               <div class="box box-primary">
                 <div class="box-header with-border">

@@ -162,20 +162,13 @@
                             
             <li>
               <a href="{{url('/assignees')}}">
-               <i class="fa fa-database" aria-hidden="true"></i>
+               <i class="fa fa-database" aria-hidden="true"></i> 
                 <span>Assignee</span>
               </a>
              
             </li>
               
                     
-            <li>
-              <a href="{{url('assets')}}">
-               <i class="fa fa-database" aria-hidden="true"></i>
-                <span>Assets</span>
-              </a>
-            </li>
-
             <li>
               <a href="{{url('assets/create')}}">
                 <i class="fa fa-database" aria-hidden="true"></i>

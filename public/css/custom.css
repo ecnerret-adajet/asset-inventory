@@ -7,19 +7,21 @@
 }
 
 .box-asset{
-    margin:5px; 
+    padding:5px; 
+    border: solid 5px #fff;
     background-color: #bdc3c7; 
-    height: 160px; 
-    width: auto; 
 }
 
 .box-asset p{
-    color: #fff; 
+    color: #000; 
     font-weight: 500;
 }
 
 .img-asset{
     margin: 0 auto;
+    padding: 20px;
+    height: 100px;
+    width: auto;
 }
 
 
