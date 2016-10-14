@@ -169,11 +169,17 @@
             </li>
               
                     
-            <li>
-              <a href="{{url('assets/create')}}">
+
+             <li class="treeview">
+              <a href="#">
                 <i class="fa fa-database" aria-hidden="true"></i>
                 <span>Laptop</span>
+                <i class="fa fa-angle-left pull-right"></i>
               </a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-tag" aria-hidden="true"></i> Loan Laptop</a></li>
+                <li><a href="#"><i class="fa fa-tag" aria-hidden="true"></i> Personal Laptop</a></li>
+              </ul>
             </li>
 
               <li>
@@ -183,12 +189,6 @@
               </a>
             </li>
 
-               <li>
-              <a href="{{url('assets/create')}}">
-                <i class="fa fa-database" aria-hidden="true"></i>
-                <span>Leased assets</span>
-              </a>
-            </li>
 
                <li>
               <a href="{{url('assets/create')}}">
