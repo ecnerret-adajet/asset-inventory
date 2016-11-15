@@ -295,10 +295,14 @@ class Asset extends Model implements Revisionable
     {
         return $this->hasMany('App\Disposal');
     }
-    
-    
 
-    
+
+    /* list for loan */
+
+    public function loans()
+    {
+        return $this->belongsToMany('App\Loan');
+    }
   
     
 }

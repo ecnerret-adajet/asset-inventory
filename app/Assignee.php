@@ -60,6 +60,12 @@ class Assignee extends Model implements Revisionable
     {
         return $this->belongsToMany('App\Asset')->withTimestamps();
     }
+
+    /* list for loan laptop users */
+
+    public function loans(){
+        return $this->belongsToMany('App\Loan');
+    }
     
 
     

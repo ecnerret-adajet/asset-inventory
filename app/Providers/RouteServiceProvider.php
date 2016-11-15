@@ -32,6 +32,8 @@ class RouteServiceProvider extends ServiceProvider
            $router->model('assets', 'App\Asset');
            $router->model('disposals', 'App\Disposal');
            $router->model('plcs', 'App\Plc');
+           $router->model('loans', 'App\Loan');
+           $router->model('laptops', 'App\Laptop');
         
         
          $router->bind('owns', function($name){

@@ -12,34 +12,21 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
-    
-    
        mix.styles([
+        '_all-skins.min.css',
+        'AdminLTE.css',
         'bootstrap.min.css',
         'bootstrap-select.min.css',
-        'select2.min.css',
+        'custom.css',
         'dataTables.bootstrap.min.css',
-        'responsive.bootstrap.min.css',
         'dataTables.tableTools.css',
-        'style.css'
-    ], null, 'public/css');
-    
-    
-      mix.scripts([
-        'bootstrap-select.min.js',
-        'jquery.min.js',
-        'bootstrap.min.js',
-        'select2.min.js',
-        'bootstrap-filestyle.min.js',
-        'laravel-bootstrap-modal-form.js',
-        'jquery.dataTables.min.js',
-        'dataTables.responsive.min.js',
-        'responsive.bootstrap.min.js',
-        'jquery.dataTables.columnFilter.js',
-        'dataTables.tableTools.min.js',
-        'dataTables.bootstrap.min.js'
-    ], null, 'public/js');
+        'font-awesome.min.css',
+        'ionicons.min.css',
+        'jquery-jvectormap-1.2.2.css',
+        'responsive.bootstrap.min.css',
+        'select2.min.css'
+    ], 'public/css/all.css');
+  
 });
 
 

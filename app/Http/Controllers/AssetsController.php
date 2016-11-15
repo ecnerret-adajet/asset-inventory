@@ -132,7 +132,6 @@ class AssetsController extends Controller
         
 		if($request->hasFile('image')) {
             
-            
              $imageName = $asset->id . '.' . 
                  $request->file('image')->getClientOriginalExtension();
 

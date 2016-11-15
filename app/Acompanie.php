@@ -14,4 +14,10 @@ class Acompanie extends Model
     {
         return $this->belongsToMany('App\Assignee');
     }
+
+    public function laptops()
+    {
+    	return $this->belongsToMany('App\Laptop');
+    }
+
 }

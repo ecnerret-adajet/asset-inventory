@@ -23,19 +23,29 @@
 |
 */
 
+ 
 
 Route::group(['middleware' => 'web'], function () {
-    Route::get('/', function () {
+   Route::get('/', function () {
     return view('auth.login');
 });
   
     Route::auth();
-  
-
     Route::resource('assignees','AssigneesController');
     Route::resource('assets','AssetsController');
     Route::resource('disposals','DisposalsController');
     Route::resource('plcs','PlcsController');
+
+
+
+    Route::resource('loans', 'LoansController',
+    ['only' => ['index','store', 'update', 'destroy']]);
+
+    Route::get('loans/create/{id}', 'LoansController@create');
+
+
+
+    Route::resource('laptops','LaptopsController');
     Route::resource('users','UsersController');
     Route::get('own/{owns}', 'OwnsController@index');
     
@@ -57,5 +67,6 @@ Route::get('roles/{id}',['as'=>'roles.show','uses'=>'RoleController@show']);
 Route::get('roles/{id}/edit',['as'=>'roles.edit','uses'=>'RoleController@edit','middleware' => ['permission:role-edit']]);
 Route::patch('roles/{id}',['as'=>'roles.update','uses'=>'RoleController@update','middleware' => ['permission:role-edit']]);
 Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RoleController@destroy','middleware' => ['permission:role-delete']]); 
-    
+
+
 });

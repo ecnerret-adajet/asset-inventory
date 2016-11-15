@@ -6,29 +6,11 @@
     <title>Asset Inventory</title>
           <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- DataTables -->
-    <link href="{{ asset('/css/bootstrap-select.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('/css/select2.min.css') }}" rel="stylesheet" />
-         <!-- hide styles   -->
-    <link href="{{ asset('/css/dataTables.tableTools.css') }}" rel="stylesheet" >
-    <link href="{{ asset('/css/dataTables.bootstrap.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('/css/responsive.bootstrap.min.css') }}" rel="stylesheet" />  
-    <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- jvectormap -->
-    <link rel="stylesheet" href="{{asset('/plugins/jvectormap/jquery-jvectormap-1.2.2.css')}}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset('/css/AdminLTE.css')}}">
-    <link rel="stylesheet" href="{{asset('/css/custom.css')}}">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="{{asset('/css/skins/_all-skins.min.css')}}">
 
 
+    <!-- css -->
+    <link href="{{ asset('/css/all.css') }}" rel="stylesheet" />
+   
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -169,15 +151,14 @@
             </li>
               
                     
-
-             <li class="treeview">
+            <li class="treeview">
               <a href="#">
                 <i class="fa fa-database" aria-hidden="true"></i>
                 <span>Laptop</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-tag" aria-hidden="true"></i> Loan Laptop</a></li>
+                <li><a href="{{url('loans')}}"><i class="fa fa-tag" aria-hidden="true"></i> Loan Laptop</a></li>
                 <li><a href="#"><i class="fa fa-tag" aria-hidden="true"></i> Personal Laptop</a></li>
               </ul>
             </li>
@@ -189,6 +170,12 @@
               </a>
             </li>
 
+               <li>
+              <a href="{{url('assets/create')}}">
+                <i class="fa fa-database" aria-hidden="true"></i>
+                <span>Leased assets</span>
+              </a>
+            </li>
 
                <li>
               <a href="{{url('assets/create')}}">
@@ -512,138 +499,13 @@
     <script src="{{ asset('/js/report.js') }}"></script>
     <script src="{{ asset('/js/asset.js') }}"></script>
 
-
-  
-
-
-
-    
-
-    <script>
-      $(function () {
-           /* export categories table  */
-      var table = $('#category').DataTable({
-              sDom: "<'row'<'col-sm-4'l><'col-sm-4'T><'col-sm-4'f>>R" +
-		"<'row'<'col-sm-12'tr>>" +
-		"<'row'<'col-sm-5'i><'col-sm-7'p>>",
-          
-        
-          
-        "tableTools": {
-            "sSwfPath": "http://cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
-        }
-    
-    
-      });
-             
-             
-                         /* export buttons */
-          
-          
-          var copyButton = $(".DTTT_button_copy").detach();
-          $(".copyAsset").append( copyButton );
-          
-           var csvButton = $(".DTTT_button_csv").detach();
-          $(".csvAsset").append( csvButton );
-          
-           var xlsButton = $(".DTTT_button_xls").detach();
-          $(".xlsAsset").append( xlsButton );
-          
-           var pdfButton = $(".DTTT_button_pdf").detach();
-          $(".pdfAsset").append( pdfButton );
-          
-           var printButton = $(".DTTT_button_print").detach();
-          $(".printAsset").append( printButton );
-      
-          /* assginees table */
-          
-        $('#assignee').DataTable({
-    
-        });
-
-         $('#dafault-table').DataTable({
-    
-        });
-          
-        $('#search').DataTable({
-        "dom": '<"top"l>rt<"bottom"ip><"clear">'
-        });
-          
-    
-          
-  
-
-      });
-    </script>
-
-
- 
-
-
-
-
-
-
-
+    <!-- custom js -->
+    <script src="{{ asset('/js/custom.js') }}"></script>
     
     
 @yield('footer')    
     
-    
-    
 
-    
-    
-    
-    
-<script type="text/javascript">
-  $('.formConfirm').on('click', function(e) {
-        e.preventDefault();
-        var el = $(this).parent();
-        var title = el.attr('data-title');
-        var msg = el.attr('data-message');
-        var dataForm = el.attr('data-form');
-        $('#formConfirm')
-        .find('#frm_body').html(msg)
-        .end().find('#frm_title').html(title)
-        .end().modal('show');
-        $('#formConfirm').find('#frm_submit').attr('data-form', dataForm);
-  });
-  $('#formConfirm').on('click', '#frm_submit', function(e) {
-        var id = $(this).attr('data-form');
-        $(id).submit();
-  });
-</script>
-
-
-<script type="text/javascript">
-$('.bs-dispose-modal-lg').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('id') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('#modal-id').val(recipient)
-})
-</script>
-
-
-
-
-
-
-   
- 
-
-    <script type="text/javascript">
-              
- $(document).ready(function() {
-  $(".assignee_list").select2({
-        placeholder: "Select an assignee"
-   });
- });
-
-    </script>
     
     
     <script>
@@ -656,67 +518,6 @@ $('.bs-dispose-modal-lg').on('show.bs.modal', function (event) {
     
     </script>
                     
-
-
-    
-    <script>
-        $(document).ready(function(){
-            
-     	$('#asset').dataTable()
-			.columnFilter({aoColumns:[
-				{ sSelector: "#asset_type" },
-				{ sSelector: "#brand" },
-				{ sSelector: "#model" },
-				{ sSelector: "#serial" },
-				{ sSelector: "#it_code" },
-				{ sSelector: "#assignee_name" },
-                null
-				]}
-			);
-        });
-    </script>
-    
-  
-    <script>
-     
- $(document).ready(function() {
-  $("#assignee_list").select2({
-        placeholder: "Select an assignee"
-  });
-        });
-
-    </script>   
-
-
-<script>
-     
- $(document).ready(function() {
-  $("#place_list").select2({
-        placeholder: "Select asset place"
-  });
-        });
-
-    </script>
-
-
-    <script>
-     
- $(document).ready(function() {
-  $("#location_list").select2({
-        placeholder: "Select a location"
-  });
-        });
-
-    </script>
-
-
-    <script type="text/javascript">
-    $(function() {                                       
-    $("#assignee_list").change(function() {                 
-        $('#transfer_name').val(this.value);                
-    });
-});
-    </script>
 
 
     
