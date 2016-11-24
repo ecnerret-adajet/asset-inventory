@@ -56,6 +56,16 @@ class User extends Authenticatable
         return $this->hasMany('App\Laptop');
     }
 
+    public function personallaptops()
+    {
+        return $this->hasMany('App\Personallaptop');
+    }
+
+    public function leases()
+    {
+        return $this->hasMany('App\Lease');
+    }
+
 
     
 }

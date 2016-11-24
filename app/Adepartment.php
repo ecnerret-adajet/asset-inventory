@@ -14,4 +14,13 @@ class Adepartment extends Model
     {
         return $this->belongsToMany('App\Assignee');
     }
+
+     /**
+     * list from loan tables
+     */
+
+    public function loans()
+    {
+        return $this->belongsToMany('App\Loan');
+    }
 }

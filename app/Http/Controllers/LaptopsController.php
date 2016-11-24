@@ -87,7 +87,9 @@ class LaptopsController extends Controller
     {
         $laptop->update($request->all());
         
-        $laptop->acompanies()->sync((!$request->input('acompanie_list') ? [] : $request->input('acompanie_list')));
+        $laptop->acompanies()->sync(  (array) $request->get('acompanie_list'));
+
+
         flashy()->success('Laptop succesfully Updated!.');
         return redirect('loans');
     }
@@ -98,8 +100,10 @@ class LaptopsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Laptop $laptop)
     {
-        //
+        $laptop->delete();
+        flashy()->info('Laptop succesfully Deleted!.');
+        return redirect('loans');
     }
 }

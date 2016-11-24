@@ -159,7 +159,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="{{url('loans')}}"><i class="fa fa-tag" aria-hidden="true"></i> Loan Laptop</a></li>
-                <li><a href="#"><i class="fa fa-tag" aria-hidden="true"></i> Personal Laptop</a></li>
+                <li><a href="{{url('personallaptops')}}"><i class="fa fa-tag" aria-hidden="true"></i> Personal Laptop</a></li>
               </ul>
             </li>
 
@@ -171,7 +171,7 @@
             </li>
 
                <li>
-              <a href="{{url('assets/create')}}">
+              <a href="{{url('leases')}}">
                 <i class="fa fa-database" aria-hidden="true"></i>
                 <span>Leased assets</span>
               </a>

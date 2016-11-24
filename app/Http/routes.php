@@ -69,4 +69,13 @@ Route::patch('roles/{id}',['as'=>'roles.update','uses'=>'RoleController@update',
 Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RoleController@destroy','middleware' => ['permission:role-delete']]); 
 
 
+/**
+ * Lease items route resource
+ */
+Route::resource('leases', 'LeasesController');
+/**
+ * Personal Laptop route resourece
+ */
+Route::resource('personallaptops', 'PersonallaptopsController');
+
 });

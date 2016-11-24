@@ -27,6 +27,26 @@ class CreateLoansTable extends Migration
             $table->timestamps();
         });
 
+        Schema::create('acompanie_loan', function(Blueprint $table){
+            $table->integer('acompanie_id')->unsigned();
+            $table->foreign('acompanie_id')->references('id')
+                ->on('acompanies')->onDelete('cascade');
+            $table->integer('loan_id')->unsigned();
+            $table->foreign('loan_id')->references('id')
+                ->on('loans')->onDelete('cascade');
+            $table->timestamps();
+        });
+
+        Schema::create('adepartment_loan', function(Blueprint $table){
+            $table->integer('adepartment_id')->unsigned();
+            $table->foreign('adepartment_id')->references('id')
+                ->on('adepartments')->onDelete('cascade');
+            $table->integer('loan_id')->unsigned();
+            $table->foreign('loan_id')->references('id')
+                ->on('loans')->onDelete('cascade');
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -37,6 +57,8 @@ class CreateLoansTable extends Migration
     public function down()
     {
        
+        Schema::drop('adepartment_loan');
+        Schema::drop('acompanie_loan');
         Schema::drop('loans');
     }
 }

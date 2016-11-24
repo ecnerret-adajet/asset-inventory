@@ -38,8 +38,32 @@ class Loan extends Model
      	return $this->laptops->lists('id')->all();
      }
 
-    
+     /**
+      * List all available companies user loan
+      */
 
+    public function acompanies()
+    {
+        return $this->belongsToMany('App\Acompanie')->withTimestamps();
+    }    
 
+    public function getAcompanieListAttribute()
+    {
+        return $this->acompanies->lists('id')->all();
+    }
+
+    /**
+     * list all available department's user loan
+     */
+
+    public function adepartments()
+    {
+        return $this->belongsToMany('App\Adepartment')->withTimestamps();
+    }
+
+    public function getAdepartmentListAttribute()
+    {
+        return $this->adepartments->lists('id')->all();
+    }
 
 }

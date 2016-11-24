@@ -40,13 +40,13 @@
  
   <thead>
   <tr>
+   <th>#</th>
    <th>Name</th>
   <th>Serial</th>
   <th>Finance Code</th>
   <th>IT Code</th>
   <th>Company</th>
   <th>Remarks</th>
-  <th>Loan</th>
   <th>Action</th>
   </tr>
   </thead>
@@ -57,6 +57,9 @@
   <tbody>
       @foreach($laptops as $laptop)
         <tr>
+         <td>
+            {{$laptop->id}}
+            </td>
             <td>
             <a data-toggle="modal" data-target=".bs-show{{$laptop->id}}-modal-lg" href="">
             {{$laptop->model}}
@@ -79,24 +82,33 @@
             <td>
             {{$laptop->remarks}}
             </td>
-            <td>
 
-            @forelse($laptop->loans->where('on_loan', 1, false) as $loan)
-            <button class="btn btn-default btn-block disabled"  href="">
-            On Loan  
-            </button>
+
+            <td width="15%">
+    <div class="btn-group">
+      <a href="#" class="btn  dropdown-toggle btn-primary" data-toggle="dropdown" aria-expanded="false">
+        <i class="ion-gear-b"></i> Choose action
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu list-group btn-action">
+
+          @forelse($laptop->loans->where('on_loan', 1, false) as $loan)
+             <li class="list-group-item"><a href="#" style="color: gray">Not Available</a> </li>
             @empty
-            <a class="btn btn-danger btn-block" href="{{ url('loans/create/'. $laptop->id) }}">
-            Loan
-            </a>
-            @endforelse
+            <li class="list-group-item"><a href="{{ url('loans/create/'. $laptop->id) }}">Loan </a></li>
+      @endforelse
+        <li class="list-group-item"><a href="{{url('laptops/'.$laptop->id.'/edit')}}">Edit Laptop</a></li>
+
+
+        <li class="list-group-item"><a href="" data-toggle="modal" data-target=".bs-delete{{$laptop->id}}-modal-lg">Delete Laptop</a></li>
+
+
+       </ul>
+    </div>
+ 
 
             </td>
-            <td>
-               <a class="btn btn-primary btn-block" href="{{url('laptops/'.$laptop->id.'/edit')}}">
-            Edit
-            </a>
-            </td>
+       
            
         </tr>
       @endforeach
@@ -172,6 +184,47 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->      
+
+
+
+
+<!-- Delete a laptop modal -->
+<div class="modal fade bs-delete{{$laptop->id}}-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Delete a Laptop</h4>
+      </div>
+      <div class="modal-body">
+              <div class="row">
+        <div class="col-md-12">
+        <div class="panel-body text-center"> 
+    
+        <h4>  
+            Are you sure you want to delete a Laptop ?
+        </h4>
+        <em>
+        This will include laptop loan history..
+        </em>
+    
+     {!! Form::open(['method' => 'DELETE', 'action' =>                                    ['LaptopsController@destroy', $laptop->id]  ]) !!}
+      {!! csrf_field() !!}
+                                        
+    </div>
+        </div>
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Confirm</button>
+          
+           
+      </div>
+      {!! Form::close() !!}
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->  
        @endforeach
 
 
