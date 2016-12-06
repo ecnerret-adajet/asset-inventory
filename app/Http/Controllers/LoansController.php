@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoanRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Collection;
 use Carbon\Carbon;
 use Flashy;
 use App\Loan;
@@ -27,7 +27,7 @@ class LoansController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response 
      */
     public function index()
     {
@@ -35,8 +35,6 @@ class LoansController extends Controller
         $laptops = Laptop::all();
         $acompanies = Acompanie::with('laptops')->get();
         $loans = Loan::all();
-
-        $last_user = Loan::orderBy('id','desc')->take(1)->get();
 
         return view('loans.index', compact('loans',
             'acompanies',

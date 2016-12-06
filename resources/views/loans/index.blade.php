@@ -75,17 +75,19 @@
             {{$laptop->it_code}}
             </td>
             <td>
-           
+
 
            @forelse($laptop->loans->where('on_loan', 1, false) as $loan)
-             @foreach($last_user as $loan)
-              {{ $loan->user_loan }}
+              @foreach($laptop->loans->reverse()->take(1) as $loan)
+                  {{$loan->user_loan}}
             @endforeach
             @empty
-              <button class="btn btn-block btn-default disabled">
+              <button class="btn btn-block btn-success disabled">
                   Available Laptop
               </button>
             @endforelse
+
+
             </td> 
            
             <td>
