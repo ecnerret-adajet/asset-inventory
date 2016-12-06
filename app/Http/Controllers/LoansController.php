@@ -36,8 +36,11 @@ class LoansController extends Controller
         $acompanies = Acompanie::with('laptops')->get();
         $loans = Loan::all();
 
+        $last_user = Loan::orderBy('id','desc')->take(1)->get();
+
         return view('loans.index', compact('loans',
             'acompanies',
+            'last_user',
             'laptops'));
     }
 

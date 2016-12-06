@@ -45,8 +45,8 @@
   <th>Serial</th>
   <th>Finance Code</th>
   <th>IT Code</th>
-  <th>Company</th>
-  <th>Remarks</th>
+  <th>Current User</th>
+  <th>Loan</th>
   <th>Action</th>
   </tr>
   </thead>
@@ -75,12 +75,25 @@
             {{$laptop->it_code}}
             </td>
             <td>
-            @foreach($laptop->acompanies as $acompanie)
-            {{ $acompanie->name }}
+           
+
+           @forelse($laptop->loans->where('on_loan', 1, false) as $loan)
+             @foreach($last_user as $loan)
+              {{ $loan->user_loan }}
             @endforeach
-            </td>
+            @empty
+              <button class="btn btn-block btn-default disabled">
+                  Available Laptop
+              </button>
+            @endforelse
+            </td> 
+           
             <td>
-            {{$laptop->remarks}}
+           @forelse($laptop->loans->where('on_loan', 1, false) as $loan)
+            <button class="btn btn-default disabled btn-block">Not Available</button>
+            @empty
+            <a class="btn btn-danger btn-block" href="{{ url('loans/create/'. $laptop->id) }}">Loan</a>
+            @endforelse
             </td>
 
 
@@ -92,11 +105,7 @@
       </a>
       <ul class="dropdown-menu list-group btn-action">
 
-          @forelse($laptop->loans->where('on_loan', 1, false) as $loan)
-             <li class="list-group-item"><a href="#" style="color: gray">Not Available</a> </li>
-            @empty
-            <li class="list-group-item"><a href="{{ url('loans/create/'. $laptop->id) }}">Loan </a></li>
-      @endforelse
+         
         <li class="list-group-item"><a href="{{url('laptops/'.$laptop->id.'/edit')}}">Edit Laptop</a></li>
 
 

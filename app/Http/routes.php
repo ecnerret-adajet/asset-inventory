@@ -48,6 +48,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('laptops','LaptopsController');
     Route::resource('users','UsersController');
     Route::get('own/{owns}', 'OwnsController@index');
+
+    
     
     Route::get('assets/{assets}/transfer', 'PagesController@transfer');
     
