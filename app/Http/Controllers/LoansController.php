@@ -17,6 +17,7 @@ use App\Assignee;
 use App\Asset;
 use App\Laptop;
 use App\Acompanie;
+use Mail;
 
 class LoansController extends Controller
 {
@@ -70,6 +71,14 @@ class LoansController extends Controller
     {
         $loan = Auth::user()->loans()->create($request->all());
         $loan->laptops()->attach($request->input('laptop_list'));
+
+        // send email notification to confirm loan laptop
+       Mail::send('emails.report-laptop', ['loan' => $loan], function($message) use ($loan) {
+         $message->to('ecnerret.adajet@gmail.com', 'Asset Inventory')
+                  ->subject('Loan Laptop Notification');
+         $message->from('admin@assetinventory.com','Administrator');
+      });
+
         flashy()->success('Loan Successfully');
         return redirect('loans');
     }

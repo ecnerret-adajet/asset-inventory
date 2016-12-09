@@ -35,7 +35,7 @@
                    
                       <hr/> 
                       
-<table id="table_custom"  class="table display table-bordered table-striped dt-responsive nowrap"  width="100%">                    
+<table id="table_custom"  class="text-center table display  table-striped dt-responsive nowrap table_custom"  width="100%">                    
     
  
   <thead>
@@ -43,11 +43,15 @@
    <th>#</th>
    <th>Name</th>
   <th>Serial</th>
-  <th>Finance Code</th>
+
   <th>IT Code</th>
-  <th>Current User</th>
+
   <th>Loan</th>
+
+   <th>Current User</th>
   <th>Action</th>
+
+   
   </tr>
   </thead>
         
@@ -61,64 +65,66 @@
             {{$laptop->id}}
             </td>
             <td>
-            <a data-toggle="modal" data-target=".bs-show{{$laptop->id}}-modal-lg" href="">
+            <a data-toggle="modal" data-target=".bs-show-laptop{{$laptop->id}}-modal-lg" href="">
             {{$laptop->model}}
             </a>
             </td>
               <td>
             {{$laptop->serial}}
             </td>
-              <td>
-            {{$laptop->finance_code}}
-            </td>
+         
               <td>
             {{$laptop->it_code}}
             </td>
+   
+           
             <td>
-
-
            @forelse($laptop->loans->where('on_loan', 1, false) as $loan)
-              @foreach($laptop->loans->reverse()->take(1) as $loan)
-                  {{$loan->user_loan}}
-            @endforeach
+          <button class="btn btn-default btn-block disabled" style="font-size:15px">
+            <i class="ion-record" style="color:#e74c3c;"></i>
+          Not available
+          </button>
+
+
             @empty
-              <button class="btn btn-block btn-success disabled">
-                  Available Laptop
-              </button>
+            <a class="btn btn-primary btn-block" style="font-size:15px" href="{{ url('loans/create/'. $laptop->id) }}">
+             <i class="ion-bookmark"></i> Loan
+            </a>
+            @endforelse
+            </td>
+
+
+                            <td>
+
+
+           @forelse($laptop->loans->where('on_loan', 1, false)->reverse()->take(1) as $loan)
+                  {{$loan->user_loan}}
+            @empty
+          
+
+          <button class="btn btn-default btn-block disabled" style="font-size:15px">
+            <i class="ion-record" style="color:#2ecc71;"></i>
+          Available
+          </button>
+
             @endforelse
 
 
             </td> 
-           
+
+
             <td>
-           @forelse($laptop->loans->where('on_loan', 1, false) as $loan)
-            <button class="btn btn-default disabled btn-block">Not Available</button>
-            @empty
-            <a class="btn btn-danger btn-block" href="{{ url('loans/create/'. $laptop->id) }}">Loan</a>
-            @endforelse
-            </td>
 
 
-            <td width="15%">
-    <div class="btn-group">
-      <a href="#" class="btn  dropdown-toggle btn-primary" data-toggle="dropdown" aria-expanded="false">
-        <i class="ion-gear-b"></i> Choose action
-        <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu list-group btn-action">
-
-         
-        <li class="list-group-item"><a href="{{url('laptops/'.$laptop->id.'/edit')}}">Edit Laptop</a></li>
-
-
-        <li class="list-group-item"><a href="" data-toggle="modal" data-target=".bs-delete{{$laptop->id}}-modal-lg">Delete Laptop</a></li>
-
-
-       </ul>
-    </div>
- 
+            <button data-toggle="modal" data-target=".bs-show{{$laptop->id}}-modal-lg" class="btn btn-primary btn-block" style="font-size:15px">
+            <i class="ion-clock"></i>
+           View History
+          </button>
 
             </td>
+
+
+     
        
            
         </tr>
@@ -128,6 +134,80 @@
 
 
     @foreach($laptops as $laptop)
+<!-- Show laptop modal form -->
+<div class="modal fade bs-show-laptop{{$laptop->id}}-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content" style="min-width: 850px;  margin-left: -80px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Loan Laptop history</h4>
+      </div>
+      <div class="modal-body">
+
+          <div class="row">
+
+            <div class="col-md-4">
+                <table>
+                    <tr>
+                    <td>
+                    <img class="img-responsive" 
+                         style="padding: 30px; border: 2px dashed #000;" src="{{asset('/img/web/laptop.png')}}">
+                    </td>
+                    </tr>
+                </table>
+                
+              </div>
+
+              <div class="col-md-8">
+                  <table class="table_custom table-bordered" style="margin: 0 ! important" width="100%">
+                  <thead>
+                      <tr class="thead-inverse">
+                        <th width="35%">Model</th>
+                        <td style="padding-left: 20px;">{{$laptop->model}}</td>
+                      </tr>
+
+                       <tr class="thead-inverse">
+                        <th width="35%">Serial</th>
+                        <td style="padding-left: 20px;">{{$laptop->serial}}</td>
+                      </tr>
+
+                       <tr class="thead-inverse">
+                        <th width="35%">Finance Code</th>
+                        <td style="padding-left: 20px;">{{$laptop->finance_code}}</td>
+                      </tr>
+
+                       <tr class="thead-inverse">
+                        <th width="35%">IT Code</th>
+                        <td style="padding-left: 20px;">{{$laptop->it_code}}</td>
+                      </tr>
+
+                       <tr class="thead-inverse">
+                        <th width="35%">Remarks</th>
+                        <td style="padding-left: 20px;">{{$laptop->remarks}}</td>
+                      </tr>
+                </thead>
+                  </table>
+
+              </div>
+
+          </div>
+      
+      </div><!-- modal body -->
+      <div class="modal-footer">
+
+      <a class="btn btn-primary pull-left" href="{{url('laptops/'.$laptop->id.'/edit')}}"><i class="ion-compose"></i> Edit</a>
+      <button class="btn btn-danger pull-left" data-toggle="modal" data-target=".bs-delete{{$laptop->id}}-modal-lg"><i class="ion-trash-a"></i> Delete</button>
+
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->    
+  
+
+
+
+
 <!-- Show modal form -->
 <div class="modal fade bs-show{{$laptop->id}}-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog">
