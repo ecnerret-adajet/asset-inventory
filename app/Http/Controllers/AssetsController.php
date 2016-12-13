@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AssetRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Collection;
 use App\Adepartment;
 use App\Acompanie;
 use App\Own;
@@ -26,6 +26,7 @@ use Sofa\Revisionable\Laravel\Revision;
 use Sofa\Revisionable\Laravel\AssigneePresenter;
 use Flashy;
 use Gate;
+use App\Laptop;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
 use Intervention\Image\ImageManager;
@@ -94,8 +95,6 @@ class AssetsController extends Controller
         $places = Place::lists('name','id');
         $assignees = Assignee::lists('assignee_name','assignee_name');
         $programs = Program::all();
-       
-    
         
         return view('assets.create', compact(
             'owns',
@@ -125,10 +124,6 @@ class AssetsController extends Controller
         /*
         $asset->assignees()->attach($request->input('assignee_list'));
         */
-            
-        
-   
-        
         
 		if($request->hasFile('image')) {
             
@@ -154,6 +149,76 @@ class AssetsController extends Controller
         
         flashy()->success('asset succesfully added.');
 
+        return redirect('assets');
+    }
+
+     /**
+     * Transfer a item from laptop database to asset database.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+     public function pass()
+     {
+        $owns = Own::lists('name','id');
+        $locations = Location::lists('name','id');
+        $status = Statu::lists('name','id');
+        $places = Place::lists('name','id');
+        $assignees = Assignee::lists('assignee_name','assignee_name');
+        $programs = Program::all();
+        
+        return view('assets.transfer', compact(
+            'owns',
+            'places',
+            'locations',
+            'status',
+            'assignees',
+            'programs'
+        ));
+     }
+
+
+    public function move(Request $request, $id)
+    {
+                $asset = Auth::user()->assets()->create($request->all());          
+        
+        
+        $asset->owns()->attach($request->input('own_list'));
+        $asset->locations()->attach($request->input('location_list'));
+        $asset->status()->attach($request->input('statu_list'));
+        $asset->places()->attach($request->input('place_list'));
+        /*
+        $asset->assignees()->attach($request->input('assignee_list'));
+        */
+        
+        if($request->hasFile('image')) {
+            
+             $imageName = $asset->id . '.' . 
+                 $request->file('image')->getClientOriginalExtension();
+
+            $request->file('image')->move(
+                base_path() . '/public/images/', $imageName
+            );
+            
+            /*
+            $file = Input::file('image');
+            //getting timestamp
+            $timestamp = str_replace([' ', ':'], '-', Carbon::now()->toDateTimeString());
+            
+            $name = $timestamp. '-' .$file->getClientOriginalName();
+            
+            $asset->filePath = $name;
+
+            $file->move(public_path().'/images/', $name);
+            */
+        }
+        
+ 
+
+        $laptop = Laptop::findOrFail($id);
+        $laptop->delete();
+
+       flashy()->success('asset succesfully added.');
         return redirect('assets');
     }
 

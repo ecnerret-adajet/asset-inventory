@@ -50,6 +50,7 @@
 
    <th>Current User</th>
   <th>Action</th>
+  <th>Transfer</th>
 
    
   </tr>
@@ -118,9 +119,16 @@
 
             <button data-toggle="modal" data-target=".bs-show{{$laptop->id}}-modal-lg" class="btn btn-primary btn-block" style="font-size:15px">
             <i class="ion-clock"></i>
-           View History
+            History
           </button>
 
+            </td>
+
+            <td>
+                <a href="{{url('assets/create/move/'. $laptop->id)}}" class="btn btn-primary btn-block" style="font-size:15px">
+                  <i class="ion-shuffle" style="font-size:15px"></i>
+                  Transfer
+                </a>
             </td>
 
 
