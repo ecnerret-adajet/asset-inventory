@@ -158,18 +158,22 @@ class AssetsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-     public function pass()
+     public function pass($id)
      {
+        $laptop = Laptop::findOrFail($id);
         $owns = Own::lists('name','id');
         $locations = Location::lists('name','id');
         $status = Statu::lists('name','id');
         $places = Place::lists('name','id');
         $assignees = Assignee::lists('assignee_name','assignee_name');
         $programs = Program::all();
+
         
-        return view('assets.transfer', compact(
+        
+        return view('assets.move', compact(
             'owns',
             'places',
+            'laptop',
             'locations',
             'status',
             'assignees',
@@ -180,8 +184,7 @@ class AssetsController extends Controller
 
     public function move(Request $request, $id)
     {
-                $asset = Auth::user()->assets()->create($request->all());          
-        
+        $asset = Auth::user()->assets()->create($request->all());          
         
         $asset->owns()->attach($request->input('own_list'));
         $asset->locations()->attach($request->input('location_list'));
@@ -212,14 +215,17 @@ class AssetsController extends Controller
             $file->move(public_path().'/images/', $name);
             */
         }
-        
- 
+    
 
+        /**
+         * Remove a laptop then transfer to asset database;
+         */
         $laptop = Laptop::findOrFail($id);
         $laptop->delete();
+  
 
        flashy()->success('asset succesfully added.');
-        return redirect('assets');
+       return redirect('assets');
     }
 
     /**
